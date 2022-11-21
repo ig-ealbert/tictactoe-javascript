@@ -56,113 +56,113 @@ QUnit.test( "Clicking a space with an O prompts you to select a blank space", fu
 QUnit.test( "X wins with 3 Xs on the first row", function (assert ) {
   initializeGame();
   gameState = [[0,0,0],[2,2,2],[2,2,2]];
-  assert.equal( horizontalWin(gameState, 0), true, "Player X wins by owning the entire first row." );
+  assert.equal( didWin(gameState[0]), true, "Player X wins by owning the entire first row." );
 });
 
 QUnit.test( "O wins with 3 Os on the first row", function (assert ) {
   initializeGame();
   gameState = [[1,1,1],[2,2,2],[2,2,2]];
-  assert.equal( horizontalWin(gameState, 0), true, "Player O wins by owning the entire first row." );
+  assert.equal( didWin(gameState[0]), true, "Player O wins by owning the entire first row." );
 });
 
 QUnit.test( "X wins with 3 Xs on the second row", function (assert ) {
   initializeGame();
   gameState = [[2,2,2],[0,0,0],[2,2,2]];
-  assert.equal( horizontalWin(gameState, 1), true, "Player X wins by owning the entire second row." );
+  assert.equal( didWin(gameState[1]), true, "Player X wins by owning the entire second row." );
 });
 
 QUnit.test( "O wins with 3 Os on the second row", function (assert ) {
   initializeGame();
   gameState = [[2,2,2],[1,1,1],[2,2,2]];
-  assert.equal( horizontalWin(gameState, 1), true, "Player O wins by owning the entire second row." );
+  assert.equal( didWin(gameState[1]), true, "Player O wins by owning the entire second row." );
 });
 
 QUnit.test( "X wins with 3 Xs on the third row", function (assert ) {
   initializeGame();
   gameState = [[2,2,2],[2,2,2],[0,0,0]];
-  assert.equal( horizontalWin(gameState, 2), true, "Player X wins by owning the entire third row." );
+  assert.equal( didWin(gameState[2]), true, "Player X wins by owning the entire third row." );
 });
 
 QUnit.test( "O wins with 3 Os on the third row", function (assert ) {
   initializeGame();
   gameState = [[2,2,2],[2,2,2],[1,1,1]];
-  assert.equal( horizontalWin(gameState, 2), true, "Player O wins by owning the entire third row." );
+  assert.equal( didWin(gameState[2]), true, "Player O wins by owning the entire third row." );
 });
 
 QUnit.test( "X wins with 3 Xs on the first column", function (assert ) {
   initializeGame();
   gameState = [[0,2,2],[0,2,2],[0,2,2]];
-  assert.equal( verticalWin(gameState, 0), true, "Player X wins by owning the entire first column." );
+  assert.equal( didWin(constructCol(0)), true, "Player X wins by owning the entire first column." );
 });
 
 QUnit.test( "O wins with 3 Os on the first column", function (assert ) {
   initializeGame();
   gameState = [[1,2,2],[1,2,2],[1,2,2]];
-  assert.equal( verticalWin(gameState, 0), true, "Player O wins by owning the entire first column." );
+  assert.equal( didWin(constructCol(0)), true, "Player O wins by owning the entire first column." );
 });
 
 QUnit.test( "X wins with 3 Xs on the second column", function (assert ) {
   initializeGame();
   gameState = [[2,0,2],[2,0,2],[2,0,2]];
-  assert.equal( verticalWin(gameState, 1), true, "Player X wins by owning the entire second column." );
+  assert.equal( didWin(constructCol(1)), true, "Player X wins by owning the entire second column." );
 });
 
 QUnit.test( "O wins with 3 Os on the second column", function (assert ) {
   initializeGame();
   gameState = [[2,1,2],[2,1,2],[2,1,2]];
-  assert.equal( verticalWin(gameState, 1), true, "Player O wins by owning the entire second column." );
+  assert.equal( didWin(constructCol(1)), true, "Player O wins by owning the entire second column." );
 });
 
 QUnit.test( "X wins with 3 Xs on the third column", function (assert ) {
   initializeGame();
   gameState = [[2,2,0],[2,2,0],[2,2,0]];
-  assert.equal( verticalWin(gameState, 2), true, "Player X wins by owning the entire third column." );
+  assert.equal( didWin(constructCol(2)), true, "Player X wins by owning the entire third column." );
 });
 
 QUnit.test( "O wins with 3 Os on the third column", function (assert ) {
   initializeGame();
   gameState = [[2,2,1],[2,2,1],[2,2,1]];
-  assert.equal( verticalWin(gameState, 2), true, "Player O wins by owning the entire third column." );
+  assert.equal( didWin(constructCol(2)), true, "Player O wins by owning the entire third column." );
 });
 
 QUnit.test( "X wins with 3 Xs on the forward slash diagonal", function (assert ) {
   initializeGame();
   gameState = [[2,2,0],[2,0,2],[0,2,2]];
-  assert.equal( diagonalWin(gameState), true, "Player X wins by owning the upward diagonal." );
+  assert.equal( didWin(constructDiagonals()[1]), true, "Player X wins by owning the upward diagonal." );
 });
 
 QUnit.test( "O wins with 3 Os on the forward slash diagonal", function (assert ) {
   initializeGame();
   gameState = [[2,2,1],[2,1,2],[1,2,2]];
-  assert.equal( diagonalWin(gameState), true, "Player O wins by owning the upward diagonal." );
+  assert.equal( didWin(constructDiagonals()[1]), true, "Player O wins by owning the upward diagonal." );
 });
 
 QUnit.test( "X wins with 3 Xs on the backward slash diagonal", function (assert ) {
   initializeGame();
   gameState = [[0,2,2],[2,0,2],[2,2,0]];
-  assert.equal( diagonalWin(gameState), true, "Player X wins by owning the downward diagonal." );
+  assert.equal( didWin(constructDiagonals()[0]), true, "Player X wins by owning the downward diagonal." );
 });
 
 QUnit.test( "O wins with 3 Os on the backward slash diagonal", function (assert ) {
   initializeGame();
   gameState = [[1,2,2],[2,1,2],[2,2,1]];
-  assert.equal( diagonalWin(gameState), true, "Player O wins by owning the downward diagonal." );
+  assert.equal( didWin(constructDiagonals()[0]), true, "Player O wins by owning the downward diagonal." );
 });
 
 QUnit.test( "The game is a draw if the board is full and no player won", function (assert ) {
   initializeGame();
   gameState = [[0,1,0],[0,0,1],[1,0,1]];
-  checkForDraw(gameState);
+  checkForDraw();
   assert.equal( message.innerHTML, "The game is a draw!", "The game is a draw and that message should be displayed." );
 });
 
 QUnit.test( "All spaces should be disabled when the game is a draw", function (assert ) {
   initializeGame();
   gameState = [[0,1,0],[0,0,1],[1,0,1]];
-  checkForDraw(gameState);
-  var disabled = true;
-  for (var i = 0; i < 3; i++) {
-		for (var j = 0; j < 3; j++) {
+  checkForDraw();
+  let disabled = true;
+  for (let i = 0; i < 3; i++) {
+		for (let j = 0; j < 3; j++) {
 			if (!board.rows[i].cells[j].children[0].disabled) disabled = false;
 		}
 	}
@@ -172,10 +172,10 @@ QUnit.test( "All spaces should be disabled when the game is a draw", function (a
 QUnit.test( "All spaces should be disabled when the game is won", function (assert ) {
   initializeGame();
   gameState = [[1,1,1],[0,0,1],[1,0,0]];
-  checkForWin(gameState);
-  var disabled = true;
-  for (var i = 0; i < 3; i++) {
-		for (var j = 0; j < 3; j++) {
+  checkForWin();
+  let disabled = true;
+  for (let i = 0; i < 3; i++) {
+		for (let j = 0; j < 3; j++) {
 			if (!board.rows[i].cells[j].children[0].disabled) disabled = false;
 		}
 	}
@@ -185,7 +185,7 @@ QUnit.test( "All spaces should be disabled when the game is won", function (asse
 QUnit.test( "A message should be shown when the player X wins the game", function (assert ) {
   initializeGame();
   gameState = [[0,0,0],[1,1,0],[0,1,1]];
-  checkForWin(gameState);
+  checkForWin();
   assert.equal( message.innerHTML, "Player X won the game!", "A message should indicate that player X won the game." );
 });
 
@@ -193,21 +193,21 @@ QUnit.test( "A message should be shown when the player O wins the game", functio
   initializeGame();
   gameState = [[1,0,1],[0,1,0],[1,0,0]];
   turn = 1;
-  checkForWin(gameState);
+  checkForWin();
   assert.equal( message.innerHTML, "Player O won the game!", "A message should indicate that player O won the game." );
 });
 
 QUnit.test( "The reset button should be highlighted when the game is won", function (assert ) {
   initializeGame();
   gameState = [[0,0,0],[1,1,0],[0,1,1]];
-  checkForWin(gameState);
+  checkForWin();
   assert.equal( resetButton.classList.contains("greenBorder"), true, "The reset button should have a green border." );
 });
 
 QUnit.test( "The reset button should be highlighted when the game is a draw", function (assert ) {
   initializeGame();
   gameState = [[0,1,0],[0,0,1],[1,0,1]];
-  checkForDraw(gameState);
+  checkForDraw();
   assert.equal( resetButton.classList.contains("greenBorder"), true, "The reset button should have a green border." );
 });
 
